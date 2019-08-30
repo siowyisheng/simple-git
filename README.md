@@ -127,9 +127,45 @@ git add forgotten_file
 git commit --amend
 ```
 
-## How do find all commits that added or removed a certain string?
+## How do I find all commits that added or removed a certain string?
 
 ```bash
 git log -S "dude, where's my car?" --source --all
 git log -G "^(\s)*function foo[(][)](\s)*{$" --source --all
 ```
+
+## How do I list all files which were changed between two commits?
+
+```bash
+git log --name-only --pretty=oneline --full-index 0be8c001..HEAD | grep -vE '^[0-9a-f]{40} ' | sort | uniq
+```
+
+## How do I checkout just one file from a previous commit?
+
+```bash
+git checkout c5f567 -- file1/to/restore
+```
+
+Clean way, reverting but keep in log the revert:
+
+git revert --strategy resolve <commit>
+Harsh way, remove altogether only the last commit:
+
+git reset --soft "HEAD^"
+Note: Avoid git reset --hard as it will also discard all changes in files since the last commit. If --soft does not work, rather try --mixed or --keep.
+
+Rebase (show the log of the last 5 commits and delete the lines you don't want, or reorder, or squash multiple commits in one, or do anything else you want, this is a very versatile tool):
+
+git rebase -i HEAD~5
+And if a mistake is made:
+
+git rebase --abort
+Quick rebase: remove only a specific commit using its id:
+
+git rebase --onto commit-id^ commit-id
+Alternatives: you could also try:
+
+git cherry-pick commit-id
+Yet another alternative:
+
+git revert --no-commit
