@@ -27,15 +27,15 @@ _Git explained simply._
 
 Prepending each commit with a type, for easier organization of commits. It is often referenced from the [Karma runner conventions](http://karma-runner.github.io/0.10/dev/git-commit-msg.html).
 
-feat: adds some new feature
-fix: fixes some bug
-content: changes some values/strings/content only (no actual code change)
-test: adds tests
-refactor: refactors some section
-docs: changes some documentation
-chore: updates build (no code change)
-perf: improves performance of some section (by refactoring)
-style: formats some section
+- feat: adds some new feature
+- fix: fixes some bug
+- content: changes some values/strings/content only (no actual code change)
+- test: adds tests
+- refactor: refactors some section
+- docs: changes some documentation
+- chore: updates build (no code change)
+- perf: improves performance of some section (by refactoring)
+- style: formats some section
 
 ## How do remotes repositories work?
 
